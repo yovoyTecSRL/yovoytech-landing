@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YovoyTech Systems — IA que acelera tu negocio</title>
+  <meta name="description" content="Automatización con IA, asistentes conversacionales y orquestación DevOps para empresas modernas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black:#0a0a0f;
+      --purple:#6c2bd9;     /* morado */
+      --cyan:#06b6d4;       /* cyan */
+      --yellow:#fbbf24;     /* amarillo */
+      --white:#eaeef5;
+      --muted:#9aa3b2;
+      --glass:rgba(255,255,255,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(108,43,217,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, rgba(6,182,212,.20), transparent 60%),
+                  radial-gradient(900px 600px at 50% 120%, rgba(251,191,36,.15), transparent 55%),
+                  var(--black);
+      color:var(--white);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* Canvas background (burbujas/estrellas) */
+    #bg{
+      position:fixed; inset:0; z-index:-1;
+      filter: blur(.3px) saturate(130%);
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:10;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px; backdrop-filter: blur(10px);
+      background:linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.2));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      color:var(--white);
+    }
+    .logo{
+      width:34px; height:34px; border-radius:8px;
+      background: radial-gradient(circle at 30% 30%, var(--cyan), transparent 55%),
+                  radial-gradient(circle at 70% 70%, var(--purple), transparent 45%),
+                  #111;
+      box-shadow: 0 0 20px rgba(6,182,212,.35), inset 0 0 24px rgba(108,43,217,.35);
+    }
+    .brand b{font-family:Orbitron, sans-serif; letter-spacing:.6px}
+
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{
+      color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem;
+      padding:8px 10px; border-radius:10px; transition:all .2s ease;
+    }
+    .menu a:hover{color:var(--white); background:var(--glass)}
+    .cta{
+      --glow: 0 0 10px rgba(6,182,212,.85),
+              0 0 22px rgba(251,191,36,.65),
+              0 0 44px rgba(108,43,217,.55);
+      background: linear-gradient(90deg, var(--cyan), var(--purple) 55%, var(--yellow));
+      color:#0b0b12; font-weight:800; letter-spacing:.4px;
+      padding:10px 16px; border:none; border-radius:12px;
+      cursor:pointer; text-decoration:none;
+      box-shadow: var(--glow);
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .cta:hover{transform: translateY(-1px) scale(1.02); filter: brightness(1.08)}
+    .cta:active{transform: translateY(0) scale(.99)}
+
+    /* HERO */
+    .hero{
+      max-width:1100px; margin:0 auto; padding:80px 18px 40px;
+      display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px; color:var(--muted);
+      font-weight:700; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem;
+    }
+    .kicker .dot{width:8px; height:8px; border-radius:50%;
+      background: conic-gradient(from 0deg, var(--cyan), var(--purple), var(--yellow), var(--cyan));
+      box-shadow: 0 0 14px rgba(6,182,212,.8);
+    }
+    h1{
+      font-family:Orbitron, sans-serif; margin:10px 0 12px;
+      font-size:clamp(2rem, 5vw, 3.1rem); line-height:1.05;
+      text-shadow: 0 0 20px rgba(108,43,217,.35);
+    }
+    .lead{
+      color:#cdd3e3; font-size:1.08rem; line-height:1.65; margin-bottom:22px;
+    }
+    .chiprow{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 22px}
+    .chip{
+      padding:8px 12px; border-radius:999px; font-weight:700; font-size:.8rem;
+      background:linear-gradient(180deg, rgba(108,43,217,.25), rgba(6,182,212,.18));
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px; padding:18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.35);
+    }
+    .stats{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;
+    }
+    .stat{padding:14px; border-radius:14px; background:var(--glass); border:1px solid rgba(255,255,255,.08); text-align:center}
+    .stat b{font-size:1.4rem; color:var(--yellow)}
+    .stat span{display:block; font-size:.82rem; color:var(--muted)}
+
+    /* SECCIONES */
+    section{max-width:1100px; margin:0 auto; padding:34px 18px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .feature{padding:18px; border-radius:16px; background:var(--glass); border:1px solid rgba(255,255,255,.08)}
+    .feature h3{margin:8px 0 8px}
+    .feature p{color:#cfd6e6}
+
+    /* FOOTER */
+    footer{
+      margin-top:32px; padding:28px 18px; text-align:center; color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(0deg, rgba(255,255,255,.04), transparent);
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding-top:64px}
+      .stats{grid-template-columns:1fr 1fr}
+      .grid-3{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+
+    /* Neon breathing around button */
+    @keyframes neonPulse{
+      0%{box-shadow:0 0 10px rgba(6,182,212,.7),0 0 22px rgba(251,191,36,.5),0 0 44px rgba(108,43,217,.4)}
+      50%{box-shadow:0 0 18px rgba(6,182,212,1),0 0 34px rgba(251,191,36,.9),0 0 64px rgba(108,43,217,.85)}
+      100%{box-shadow:0 0 10px rgba(6,182,212,.7),0 0 22px rgba(251,191,36,.5),0 0 44px rgba(108,43,217,.4)}
+    }
+    .cta{animation: neonPulse 2.6s ease-in-out infinite}
+  </style>
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="brand" href="#">
+      <span class="logo" aria-hidden="true"></span>
+      <b>YovoyTech</b>
+    </a>
+    <div class="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#casos">Casos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="cta" href="https://wa.me/50600000000" target="_blank" rel="noopener">Solicitar demo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="kicker"><span class="dot"></span> Automatización con IA · DevOps</div>
+      <h1>Empoderamos tu operación con IA, <span style="color:var(--cyan)">rápida</span>, <span style="color:var(--purple)">segura</span> y <span style="color:var(--yellow)">rentable</span>.</h1>
+      <p class="lead">Integramos asistentes conversacionales, validaciones inteligentes, y orquestación en la nube para acelerar ventas y reducir costos. Del prototipo al productivo, sin fricción.</p>
+      <div class="chiprow">
+        <span class="chip">Asistentes de Voz + Chat</span>
+        <span class="chip">Integración Odoo</span>
+        <span class="chip">Playwright QA</span>
+        <span class="chip">Dashboards & Sentinel</span>
+      </div>
+      <a class="cta" href="#contacto">Agendar una reunión</a>
+
+      <div class="stats">
+        <div class="stat"><b>99.97%</b><span>Uptime objetivo</span></div>
+        <div class="stat"><b>-35%</b><span>Costos operativos</span></div>
+        <div class="stat"><b>+3x</b><span>Velocidad de despliegue</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px">Stack YovoyTech</h3>
+      <ul style="margin:0; padding-left:18px; line-height:1.8">
+        <li>FastAPI · Node · Docker · NGINX</li>
+        <li>OpenAI GPT · TTS/STT · WebRTC</li>
+        <li>Odoo 16 Community · Postgres</li>
+        <li>QA con Playwright · GitHub Actions</li>
+      </ul>
+      <p style="color:var(--muted);margin-top:10px">Diseñado para escalar en Hetzner, Azure o multi-cloud.</p>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section id="servicios">
+    <h2 style="font-family:Orbitron;margin:0 0 14px">Servicios clave</h2>
+    <div class="grid-3">
+      <div class="feature">
+        <h3>Avatares & Chat IA</h3>
+        <p>Atención 24/7 con voz natural y lip-sync, orquestada con tu CRM/ERP y flujos de negocio.</p>
+      </div>
+      <div class="feature">
+        <h3>Validación Inteligente</h3>
+        <p>Scoring, antifraude y reglas dinámicas: conectamos con fuentes externas y tu core bancario.</p>
+      </div>
+      <div class="feature">
+        <h3>DevOps & QA</h3>
+        <p>CI/CD, pruebas end-to-end y observabilidad. Despliega en minutos, no en semanas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS -->
+  <section id="casos">
+    <h2 style="font-family:Orbitron;margin:0 0 14px">Casos de uso</h2>
+    <div class="grid-3">
+      <div class="feature"><h3>Onboarding financiero</h3><p>Formularios conversacionales con verificación automática (Hacienda, SUGEF, etc.).</p></div>
+      <div class="feature"><h3>Soporte y ventas</h3><p>IA que entiende intención, califica leads y agenda citas.</p></div>
+      <div class="feature"><h3>Educación inteligente</h3><p>Tutores de física/inglés con seguimiento y certificación.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2 style="font-family:Orbitron;margin:0 0 14px">Conversemos</h2>
+    <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <a class="cta" href="mailto:info@sistemasorbix.com">Escríbenos</a>
+      <a class="cta" href="https://wa.me/50600000000" target="_blank" rel="noopener">WhatsApp</a>
+      <span style="color:var(--muted)">Tiempo típico de respuesta: &lt; 2 horas</span>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> YovoyTech Systems — Ingeniería + IA aplicada</footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Partículas: burbujas/estrellas en canvas
+    const c = document.getElementById('bg');
+    const ctx = c.getContext('2d');
+    let w, h, particles = [];
+
+    function resize(){
+      w = c.width = window.innerWidth;
+      h = c.height = window.innerHeight;
+      particles = Array.from({length: Math.min(160, Math.floor(w*h/18000))}, () => ({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*2.2+0.6,
+        vx: (Math.random()-.5)*.25,
+        vy: (Math.random()-.5)*.25,
+        hue: [184, 277, 48][Math.floor(Math.random()*3)], // cyan, purple, yellow
+        alpha: Math.random()*.7+.2
+      }));
+    }
+    window.addEventListener('resize', resize, {passive:true}); resize();
+
+    function tick(){
+      ctx.clearRect(0,0,w,h);
+      for(const p of particles){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<-5) p.x=w+5; if(p.x>w+5) p.x=-5;
+        if(p.y<-5) p.y=h+5; if(p.y>h+5) p.y=-5;
+
+        // halo
+        const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+        grad.addColorStop(0, `hsla(${p.hue} 100% 60% / ${p.alpha})`);
+        grad.addColorStop(1, `hsla(${p.hue} 100% 50% / 0)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2); ctx.fill();
+
+        // núcleo
+        ctx.fillStyle = `hsla(${p.hue} 100% 70% / .8)`;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  </script>
+</body>
+</html>
