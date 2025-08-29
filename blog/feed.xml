@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog YovoyTech</title>
+    <description>Artículos sobre IA, automatización, Odoo y tecnologías emergentes</description>
+    <link>https://www.yovoytech.com/blog/</link>
+    <atom:link href="https://www.yovoytech.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <language>es-ES</language>
+    <lastBuildDate>Thu, 29 Aug 2024 00:00:00 GMT</lastBuildDate>
+    <managingEditor>info@sistemasorbix.com (YovoyTech Systems)</managingEditor>
+    <webMaster>info@sistemasorbix.com (YovoyTech Systems)</webMaster>
+    
+    <!-- Placeholder for future blog posts -->
+    <item>
+      <title>Próximamente: Contenido exclusivo sobre IA y Odoo</title>
+      <description>Estamos preparando artículos exclusivos sobre implementación de IA, automatización con Odoo, y las mejores prácticas en ciberseguridad.</description>
+      <link>https://www.yovoytech.com/blog/</link>
+      <guid>https://www.yovoytech.com/blog/</guid>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

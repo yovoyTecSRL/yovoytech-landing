@@ -1,0 +1,53 @@
+name: QA Automation
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  qa-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install --save-dev htmlhint stylelint stylelint-config-standard linkinator
+    
+    - name: Run HTMLHint
+      run: npx htmlhint "**/*.html"
+      continue-on-error: true
+    
+    - name: Run Stylelint
+      run: npx stylelint "**/*.css"
+      continue-on-error: true
+    
+    - name: Check for broken links
+      run: npx linkinator . --config linkinator.config.json
+      continue-on-error: true
+    
+    - name: Validate HTML structure
+      run: |
+        echo "Checking for required elements..."
+        grep -r "nav-global.css\|nav-global.js" . --include="*.html" || echo "Warning: Some pages missing global navigation"
+        
+    - name: Check responsive meta tags
+      run: |
+        echo "Validating viewport meta tags..."
+        grep -r 'name="viewport"' . --include="*.html" | wc -l
+        
+    - name: Summary
+      run: |
+        echo "✅ QA checks completed"
+        echo "📝 Review any warnings above"
+        echo "🚀 Ready for deployment if all checks pass"

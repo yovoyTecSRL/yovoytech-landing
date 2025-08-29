@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-empty-line-before": null,
+    "custom-property-pattern": null,
+    "selector-class-pattern": null,
+    "value-keyword-case": null,
+    "color-hex-length": null,
+    "number-leading-zero": "never",
+    "declaration-block-no-redundant-longhand-properties": null
+  }
+}

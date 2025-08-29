@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Disallow specific file types
+Disallow: *.css$
+Disallow: *.js$
+Disallow: *.json$
+
+# Allow important directories
+Allow: /blog/
+Allow: /portafolio/
+Allow: /contacto/
+Allow: /sentinel/
+Allow: /aenki/
+
+# Sitemap location
+Sitemap: https://www.yovoytech.com/sitemap.xml

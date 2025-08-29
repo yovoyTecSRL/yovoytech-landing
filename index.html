@@ -3,15 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YovoyTech — Automatización con IA, rápido y rentable</title>
-  <meta name="description" content="YovoyTech acelera tu operación con IA: asistentes conversacionales, validación inteligente y DevOps moderno.">
+  <title>YovoyTech — IA que mueve el negocio. Odoo que escala.</title>
+  <meta name="description" content="Asistentes, RAG y automatización end-to-end integrados con Odoo 16 Community. IA que mueve el negocio, Odoo que escala.">
   <meta name="theme-color" content="#0a0a0f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/nav-global.css">
+  <link rel="stylesheet" href="/sentinel-unified.css">
+  <script src="/nav-global.js" defer></script>
   <!-- Open Graph -->
-  <meta property="og:title" content="YovoyTech — Automatización con IA">
-  <meta property="og:description" content="Asistentes de voz/chat, Odoo, QA y orquestación DevOps.">
+  <meta property="og:title" content="YovoyTech — IA que mueve el negocio. Odoo que escala.">
+  <meta property="og:description" content="Asistentes, RAG y automatización end-to-end integrados con Odoo 16 Community.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.yovoytech.com">
 
@@ -148,16 +151,20 @@
 
   <header class="hero">
     <div>
-      <div class="kicker"><span class="dot"></span> Automatización con IA · DevOps</div>
-      <h1>IA <span style="color:var(--cyan)">rápida</span>, <span style="color:var(--purple)">segura</span> y <span style="color:var(--yellow)">rentable</span> para tu operación.</h1>
-      <p class="lead">Integramos asistentes conversacionales, validaciones inteligentes y orquestación en la nube. Del prototipo al productivo sin fricción.</p>
+      <div class="kicker"><span class="dot"></span> IA que mueve el negocio · Odoo que escala</div>
+      <h1><span style="color:var(--cyan)">IA</span> que mueve el negocio. <span style="color:var(--purple)">Odoo</span> que <span style="color:var(--yellow)">escala</span>.</h1>
+      <p class="lead">Asistentes, RAG y automatización end-to-end integrados con Odoo 16 Community. Potencia tu operación con inteligencia artificial y un ERP robusto.</p>
       <div class="chiprow">
-        <span class="chip">Voz + Chat</span>
+        <span class="chip">Automatización con IA</span>
         <span class="chip">Integración Odoo</span>
-        <span class="chip">QA Playwright</span>
-        <span class="chip">Observabilidad</span>
+        <span class="chip">Ciberseguridad</span>
+        <span class="chip">RAG & Asistentes</span>
       </div>
-      <a class="cta" href="#contacto">Agendar reunión</a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0">
+        <a class="cta" href="https://odoo.yovoytech.com/web/login" target="_blank">Entrar a Odoo</a>
+        <a class="cta" href="/blog/" style="background:transparent;border:2px solid var(--cyan)">Leer el blog</a>
+        <a class="cta" href="/contacto/" style="background:transparent;border:2px solid var(--purple)">Contacto</a>
+      </div>
 
       <div class="stats" role="list">
         <div class="stat" role="listitem"><b>99.97%</b><span>Uptime objetivo</span></div>
@@ -179,11 +186,32 @@
   </header>
 
   <section id="servicios">
-    <h2 style="font-family:Orbitron;margin:0 0 14px">Servicios</h2>
+    <h2 style="font-family:Orbitron;margin:0 0 14px">Nuestros Servicios</h2>
     <div class="grid-3">
-      <article class="feature"><h3>Avatares & Chat IA</h3><p>Atención 24/7 con voz natural y lip-sync, orquestada con tu CRM/ERP.</p></article>
-      <article class="feature"><h3>Validación Inteligente</h3><p>Scoring, antifraude y reglas dinámicas con fuentes externas y core bancario.</p></article>
-      <article class="feature"><h3>DevOps & QA</h3><p>CI/CD, pruebas E2E y observabilidad. Despliegues en minutos.</p></article>
+      <article class="feature">
+        <h3>Automatización con IA</h3>
+        <p>Asistentes conversacionales, RAG y procesamiento inteligente de documentos. Automatiza workflows complejos con inteligencia artificial avanzada.</p>
+      </article>
+      <article class="feature">
+        <h3>Integración Odoo</h3>
+        <p>Odoo 16 Community completamente integrado con tus sistemas de IA. CRM, ventas, inventario y contabilidad en una plataforma unificada.</p>
+      </article>
+      <article class="feature">
+        <h3>Ciberseguridad</h3>
+        <p>Sentinel y monitoreo avanzado. Protege tu infraestructura con detección de amenazas en tiempo real y respuesta automática.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="odoo-links">
+    <h2 style="font-family:Orbitron;margin:0 0 14px">Plataforma Odoo</h2>
+    <div class="card" style="text-align:center">
+      <p style="color:var(--muted);margin-bottom:18px">Accede a todos los módulos de tu instancia Odoo 16 Community</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="cta" href="https://odoo.yovoytech.com/web/login" target="_blank">Portal Principal</a>
+        <a class="cta" href="https://odoo.yovoytech.com/blog" target="_blank" style="background:transparent;border:2px solid var(--cyan)">Blog Odoo</a>
+        <a class="cta" href="https://odoo.yovoytech.com/shop" target="_blank" style="background:transparent;border:2px solid var(--purple)">Tienda</a>
+      </div>
     </div>
   </section>
 

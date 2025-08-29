@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+.panel{background:var(--card);border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:18px;margin:14px 0}
+.status.secure{color:#00ff80} .status.suspicious{color:#ff4757}
+.connections-table{width:100%;border-collapse:separate;border-spacing:0 6px}
+.connections-table th{color:var(--muted);text-align:left;font-weight:600}
+.connections-table td,.connections-table th{padding:10px 12px;
+  background:rgba(255,255,255,.03)}
+.metrics-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.metric-card{background:var(--card);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:14px;text-align:center}
+.metric-card.critical{border-color:rgba(255,71,87,.5)}
+.btn-outline{border:1px solid rgba(255,255,255,.25);background:transparent}
