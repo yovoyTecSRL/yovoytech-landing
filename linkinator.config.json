@@ -1,0 +1,13 @@
+{
+  "recurse": true,
+  "linksToSkip": [
+    "https://wa.me/50600000000",
+    "mailto:info@sistemasorbix.com",
+    "https://odoo.yovoytech.com",
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "timeout": 10000,
+  "concurrency": 10,
+  "format": "text"
+}
