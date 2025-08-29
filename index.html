@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#0a0a0f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <!-- Open Graph -->
   <meta property="og:title" content="YovoyTech — Automatización con IA">
   <meta property="og:description" content="Asistentes de voz/chat, Odoo, QA y orquestación DevOps.">
@@ -106,6 +106,147 @@
     .stat{padding:14px;border-radius:14px;background:var(--glass);border:1px solid rgba(255,255,255,.08);text-align:center}
     .stat b{font-size:1.4rem;color:var(--yellow)} .stat span{display:block;font-size:.82rem;color:var(--muted)}
 
+    /* World Clock */
+    .world-clock-section{max-width:1100px;margin:0 auto;padding:48px 18px 34px}
+    .world-clock-section h2{font-family:Orbitron, sans-serif;margin:0 0 24px;text-align:center;color:var(--white)}
+    .world-clock{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:16px;
+      margin:24px 0;
+    }
+    .timezone-card{
+      background:linear-gradient(135deg, var(--glass), rgba(6, 182, 212, 0.1));
+      border:1px solid rgba(6, 182, 212, 0.3);
+      border-radius:16px;
+      padding:20px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      transition:all 0.3s ease;
+      animation:fadeInUp 0.6s ease-out;
+    }
+    .timezone-card::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:3px;
+      background:linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+    .timezone-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(6, 182, 212, 0.15);
+      border-color:rgba(6, 182, 212, 0.5);
+    }
+    .city-name{
+      font-size:1.1rem;
+      font-weight:600;
+      color:var(--cyan);
+      margin-bottom:8px;
+    }
+    .timezone-code{
+      font-size:0.85rem;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .digital-time{
+      font-family:'JetBrains Mono', 'Courier New', monospace;
+      font-size:1.8rem;
+      font-weight:700;
+      color:var(--white);
+      text-shadow:0 0 10px rgba(6, 182, 212, 0.3);
+    }
+    .digital-date{
+      font-size:0.9rem;
+      color:var(--muted);
+      margin-top:8px;
+    }
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* Enhanced Appearance Improvements */
+    .hero{
+      background:linear-gradient(135deg, 
+        var(--black) 0%, 
+        rgba(6, 182, 212, 0.05) 50%, 
+        var(--black) 100%);
+      position:relative;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:radial-gradient(circle at 30% 20%, 
+        rgba(6, 182, 212, 0.1) 0%, 
+        transparent 50%);
+      pointer-events:none;
+    }
+    h1{
+      font-family:Orbitron, sans-serif; 
+      margin:10px 0 12px; 
+      font-size:clamp(2rem,5vw,3.1rem); 
+      line-height:1.05; 
+      text-shadow:0 0 18px rgba(108,43,217,.35);
+      background:linear-gradient(135deg, var(--white), var(--cyan));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px;
+      box-shadow:0 8px 40px rgba(0,0,0,.35);
+      transition:all 0.3s ease;
+    }
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(6, 182, 212, 0.15);
+      border-color:rgba(6, 182, 212, 0.3);
+    }
+    .cta{
+      --glow:0 0 10px rgba(6,182,212,.9), 0 0 22px rgba(251,191,36,.7), 0 0 44px rgba(108,43,217,.6);
+      background:linear-gradient(90deg, var(--cyan), var(--purple) 55%, var(--yellow));
+      color:#0b0b12; font-weight:900; letter-spacing:.4px;
+      padding:10px 16px; border:none; border-radius:12px; cursor:pointer; text-decoration:none;
+      box-shadow:var(--glow); transition:transform .15s, filter .2s; animation:neon 2.6s ease-in-out infinite;
+      position:relative;
+      overflow:hidden;
+    }
+    .cta::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background:linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+      transition:left 0.5s ease;
+    }
+    .cta:hover::before{
+      left:100%;
+    }
+    .cta:hover{
+      transform:translateY(-2px) scale(1.02); 
+      filter:brightness(1.08);
+      box-shadow:0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+
     /* Sections */
     section{max-width:1100px;margin:0 auto;padding:34px 18px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -121,6 +262,8 @@
       .stats{grid-template-columns:1fr 1fr}
       .grid-3{grid-template-columns:1fr}
       .menu{display:none}
+      .world-clock{grid-template-columns:1fr}
+      .digital-time{font-size:1.5rem}
     }
 
     /* Reduce motion */
@@ -178,6 +321,54 @@
     </div>
   </header>
 
+  <section class="world-clock-section">
+    <h2>Hora Mundial</h2>
+    <div class="world-clock" id="worldClock">
+      <div class="timezone-card" data-timezone="UTC">
+        <div class="city-name">Londres</div>
+        <div class="timezone-code">UTC</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="EST">
+        <div class="city-name">Nueva York</div>
+        <div class="timezone-code">EST</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="PST">
+        <div class="city-name">Los Ángeles</div>
+        <div class="timezone-code">PST</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="CET">
+        <div class="city-name">Madrid</div>
+        <div class="timezone-code">CET</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="JST">
+        <div class="city-name">Tokio</div>
+        <div class="timezone-code">JST</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="AEST">
+        <div class="city-name">Sídney</div>
+        <div class="timezone-code">AEST</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+      <div class="timezone-card" data-timezone="CST">
+        <div class="city-name">San José</div>
+        <div class="timezone-code">CST</div>
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-date">2025-01-01</div>
+      </div>
+    </div>
+  </section>
+
   <section id="servicios">
     <h2 style="font-family:Orbitron;margin:0 0 14px">Servicios</h2>
     <div class="grid-3">
@@ -210,6 +401,38 @@
   <script>
     // Año dinámico
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // World Clock functionality
+    function updateWorldClock() {
+      const now = new Date();
+      const timezones = [
+        { name: 'Londres', code: 'UTC', offset: 0 },
+        { name: 'Nueva York', code: 'EST', offset: -5 },
+        { name: 'Los Ángeles', code: 'PST', offset: -8 },
+        { name: 'Madrid', code: 'CET', offset: 1 },
+        { name: 'Tokio', code: 'JST', offset: 9 },
+        { name: 'Sídney', code: 'AEST', offset: 11 },
+        { name: 'San José', code: 'CST', offset: -6 }
+      ];
+
+      timezones.forEach(tz => {
+        const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const localTime = new Date(utcTime + (tz.offset * 3600000));
+        
+        const timeStr = localTime.toTimeString().substr(0, 8);
+        const dateStr = localTime.toISOString().substr(0, 10);
+        
+        const card = document.querySelector(`[data-timezone="${tz.code}"]`);
+        if (card) {
+          card.querySelector('.digital-time').textContent = timeStr;
+          card.querySelector('.digital-date').textContent = dateStr;
+        }
+      });
+    }
+
+    // Update world clock immediately and then every second
+    updateWorldClock();
+    setInterval(updateWorldClock, 1000);
 
     // Partículas (burbujas/estrellas) en canvas
     const c = document.getElementById('bg');
